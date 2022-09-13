@@ -18,13 +18,16 @@ use std::fmt;
 // Example using full path (alternative 2 when having same name structs from different modules)
 use std::fmt::Result;
 // Same as use std::io; std::io::Write;
+#[allow(unused_imports)]
 use std::io::{self, Write};
 // Glob operator imports all pub modules
+#[allow(unused_imports)]
 use std::io::*;
 // Rename one to avoid conflict with as
 use std::io::Result as IoResult;
 
 // Compact import of multiple modules from one parent module
+#[allow(unused_imports)]
 use rand::{CryptoRng, Error, Rng};
 
 // Absolute path
@@ -47,9 +50,11 @@ pub fn eat_at_restaurant_add() {
     front_of_house::hosting::add_to_waitlist();
 }
 
+#[allow(dead_code)]
 fn server_order() {}
 
 // Create module, can also create mod inside mod
+#[allow(dead_code)]
 mod back_of_house {
     fn fix_incorrect_order() {
         cook_order();
@@ -61,14 +66,14 @@ mod back_of_house {
 
     pub struct Breakfast {
         pub toast: String,
-        seasonal_fruit: String,
+        //seasonal_fruit: String,
     }
 
     impl Breakfast {
         pub fn summer(toast: &str) -> Breakfast {
             Breakfast {
                 toast: String::from(toast),
-                seasonal_fruit: String::from("peaches"),
+                //seasonal_fruit: String::from("peaches"),
             }
         }
     }
@@ -79,17 +84,19 @@ mod back_of_house {
     }
 }
 
+#[allow(unused_variables)]
 pub fn eat_at_restaurant_structs() {
     let mut meal = back_of_house::Breakfast::summer("Rye");
     meal.toast = String::from("Wheat");
-    meal.seasonal_fruit = String::from("abc"); // seasonal_fruit is not public
-                                               // Can not create struct because seasonal_fruit is not public
+    //meal.seasonal_fruit = String::from("abc"); // seasonal_fruit is not public
+                                                 // Can not create struct because seasonal_fruit is not public
     let meal2 = back_of_house::Breakfast {
         toast: String::from("Wheat"),
-        seasonal_fruit: String::from("peaches"),
+        //seasonal_fruit: String::from("peaches"),
     };
 }
 
+#[allow(unused_variables)]
 pub fn eat_at_restaurant_enum() {
     // If you mark an enum as pub, all variants are pub too
     let order1 = back_of_house::Appetizer::Soup;
@@ -104,18 +111,22 @@ pub fn eat_at_restaurant() {
 
 //use std::io;
 
+#[allow(dead_code)]
 fn function1() -> fmt::Result {
     Ok(())
 }
 
+#[allow(dead_code)]
 fn function2() -> io::Result<()> {
     Ok(())
 }
 
+#[allow(dead_code)]
 fn function3() -> Result {
     Ok(())
 }
 
+#[allow(dead_code)]
 fn function4() -> IoResult<()> {
     Ok(())
 }
