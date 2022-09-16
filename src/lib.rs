@@ -89,7 +89,7 @@ pub fn eat_at_restaurant_structs() {
     let mut meal = back_of_house::Breakfast::summer("Rye");
     meal.toast = String::from("Wheat");
     //meal.seasonal_fruit = String::from("abc"); // seasonal_fruit is not public
-                                                 // Can not create struct because seasonal_fruit is not public
+    // Can not create struct because seasonal_fruit is not public
     let meal2 = back_of_house::Breakfast {
         toast: String::from("Wheat"),
         //seasonal_fruit: String::from("peaches"),
